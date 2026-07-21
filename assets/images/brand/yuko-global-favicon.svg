@@ -1,29 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
-  <title id="title">Yuko Global Samarkand</title>
-  <defs>
-    <linearGradient id="ice" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0" stop-color="#0752bd"/>
-      <stop offset="0.52" stop-color="#078ee8"/>
-      <stop offset="1" stop-color="#11c4ee"/>
-    </linearGradient>
-    <linearGradient id="deep" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#073e9f"/>
-      <stop offset="1" stop-color="#0866cf"/>
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#002b78" flood-opacity=".22"/>
-    </filter>
-  </defs>
-  <rect x="14" y="14" width="484" height="484" rx="105" fill="#f8fcff" stroke="#d8effc" stroke-width="14"/>
-  <g transform="translate(55 46)" filter="url(#shadow)">
-    <path d="M99 7c155-6 266 94 274 254-26-79-79-136-158-165-63-24-125-24-184-1 12-37 34-67 68-88Z" fill="url(#ice)"/>
-    <path d="M69 326c64 67 160 84 244 45 53-24 101-72 136-139-22 113-82 192-171 230-106 45-228 7-289-72 35 11 58 1 80-64Z" fill="url(#deep)"/>
-    <path d="M31 291c84 52 171 61 250 21 44-22 91-62 136-122-27 99-81 167-158 203-94 44-197 26-269-30 28-11 38-34 41-72Z" fill="url(#ice)"/>
-    <g transform="translate(47 90)" stroke="url(#ice)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none">
-      <path d="M112 10v211M23 62l178 107M23 169L201 62"/>
-      <path d="M112 10L84 43M112 10l28 33M112 221l-28-33M112 221l28-33"/>
-      <path d="M23 62l40 5M23 62l18 38M201 169l-40-5M201 169l-18-38"/>
-      <path d="M23 169l40-5M23 169l18-38M201 62l-40 5M201 62l-18 38"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Yuko Global</title>
+  <style>
+    .mark{fill:#0a0a0a}
+    @media (prefers-color-scheme:dark){.mark{fill:#fff}}
+  </style>
+  <g class="mark">
+    <path d="M7 17h20l24 25 24-25h20L60 55v30H42V55L7 17Z"/>
+    <path d="M96 27c-17 0-29 10-29 23s12 23 29 23c7 0 13-2 18-5v-8H94V47h34v30c-9 7-20 10-33 10-27 0-46-15-46-37s19-37 46-37c14 0 25 4 34 11l-11 11c-6-5-13-8-22-8Z"/>
+    <path d="M39 84c16-10 30-14 43-12 10 1 19 7 29 8 7 1 14 0 21-2-8 10-19 15-32 14-12-1-20-6-30-7-9-1-19 1-31 6v-7Z"/>
   </g>
 </svg>
