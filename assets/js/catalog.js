@@ -1,7 +1,10 @@
 (function () {
+  const run = () => {
   const grid = document.querySelector('[data-catalog-grid]');
-  if (!grid || !window.YUKO_PRODUCTS) return;
+  if (!grid || !window.YUKO_PRODUCTS || !window.YUKO) return;
 
+  const t = window.YUKO.t;
+  const products = window.YUKO_PRODUCTS.map(window.YUKO.localizeProduct);
   const search = document.querySelector('[data-filter-search]');
   const brand = document.querySelector('[data-filter-brand]');
   const category = document.querySelector('[data-filter-category]');
@@ -16,9 +19,9 @@
   if (category && ['inverter', 'onoff', 'design'].includes(initialType)) category.value = initialType;
 
   const categoryNames = {
-    inverter: 'Инвертор',
+    inverter: t('Инвертор'),
     onoff: 'On/Off',
-    design: 'Дизайнерская'
+    design: t('Дизайнерская')
   };
 
   function card(product) {
@@ -29,17 +32,17 @@
           <img src="${window.YUKO.imageUrl(product)}" alt="${window.YUKO.escape(product.title)}" loading="lazy">
         </a>
         <div class="product-card__body">
-          <div class="product-card__meta"><span>${window.YUKO.escape(product.brand)}</span><span>${categoryNames[product.category] || product.category}</span></div>
+          <div class="product-card__meta"><span>${window.YUKO.escape(product.brand)}</span><span>${window.YUKO.escape(categoryNames[product.category] || product.category)}</span></div>
           <h3><a href="${window.YUKO.productUrl(product)}">${window.YUKO.escape(product.title)}</a></h3>
           <p class="product-card__model">${window.YUKO.escape(product.model)}</p>
           <div class="product-card__specs">
-            <span><b>${product.area} м²</b> площадь</span>
-            <span><b>${window.YUKO.escape(product.cooling)}</b> холод</span>
-            <span><b>${window.YUKO.escape(product.noise)}</b> шум</span>
+            <span><b>${product.area} m²</b> ${window.YUKO.escape(t('площадь'))}</span>
+            <span><b>${window.YUKO.escape(product.cooling)}</b> ${window.YUKO.escape(t('холод'))}</span>
+            <span><b>${window.YUKO.escape(product.noise)}</b> ${window.YUKO.escape(t('шум'))}</span>
           </div>
           <div class="product-card__footer">
-            <div><small>Стоимость</small><strong>По запросу</strong></div>
-            <a class="button button--small button--light" href="${window.YUKO.productUrl(product)}">Подробнее</a>
+            <div><small>${window.YUKO.escape(t('Стоимость'))}</small><strong>${window.YUKO.escape(t('По запросу'))}</strong></div>
+            <a class="button button--small button--light" href="${window.YUKO.productUrl(product)}">${window.YUKO.escape(t('Подробнее'))}</a>
           </div>
         </div>
       </article>`;
@@ -51,7 +54,7 @@
     const categoryValue = category?.value || 'all';
     const areaValue = Number(area?.value || 0);
 
-    const items = window.YUKO_PRODUCTS.filter((product) => {
+    const items = products.filter((product) => {
       const haystack = `${product.title} ${product.model} ${product.series} ${product.brand}`.toLowerCase();
       const matchQuery = !query || haystack.includes(query);
       const matchBrand = brandValue === 'all' || product.brand === brandValue;
@@ -62,14 +65,13 @@
 
     grid.innerHTML = items.length ? items.map(card).join('') : `
       <div class="empty-state">
-        <span>Ничего не найдено</span>
-        <h3>Измените параметры фильтра</h3>
-        <p>Или свяжитесь с менеджером — подберём оборудование под ваш объект.</p>
+        <span>${window.YUKO.escape(t('Ничего не найдено'))}</span>
+        <h3>${window.YUKO.escape(t('Измените параметры фильтра'))}</h3>
+        <p>${window.YUKO.escape(t('Или свяжитесь с менеджером — подберём оборудование под ваш объект.'))}</p>
       </div>`;
     if (count) count.textContent = String(items.length);
 
-    const revealNodes = grid.querySelectorAll('[data-reveal]');
-    requestAnimationFrame(() => revealNodes.forEach((node) => node.classList.add('is-visible')));
+    requestAnimationFrame(() => grid.querySelectorAll('[data-reveal]').forEach((node) => node.classList.add('is-visible')));
   }
 
   [search, brand, category, area].forEach((control) => control?.addEventListener('input', render));
@@ -82,4 +84,6 @@
   });
 
   render();
+  };
+  (window.YUKO_READY || Promise.resolve()).then(run);
 })();
