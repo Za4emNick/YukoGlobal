@@ -1,42 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
-  <title id="title">Yuko Global Samarkand</title>
-  <desc id="desc">Логотип компании Yuko Global Samarkand: снежинка, воздушные волны и название компании.</desc>
-  <defs>
-    <linearGradient id="ice" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0" stop-color="#0752bd"/>
-      <stop offset="0.52" stop-color="#078ee8"/>
-      <stop offset="1" stop-color="#11c4ee"/>
-    </linearGradient>
-    <linearGradient id="deep" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#073e9f"/>
-      <stop offset="1" stop-color="#0866cf"/>
-    </linearGradient>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#001d52" flood-opacity=".22"/>
-    </filter>
-  </defs>
-
-  <g transform="translate(18 18)" filter="url(#soft)">
-    <path d="M65 245C104 286 165 298 219 274c35-16 67-48 91-92-15 74-55 126-113 151-70 30-150 4-190-48 23 8 39 2 58-40Z" fill="url(#deep)"/>
-    <path d="M29 222c54 35 111 42 164 16 29-14 60-40 90-79-18 64-54 108-105 132-61 29-128 17-175-19 18-8 24-24 26-50Z" fill="url(#ice)"/>
-    <path d="M79 12c96-4 167 61 175 159-18-52-52-89-102-108-41-16-82-17-121-3 8-19 25-35 48-48Z" fill="url(#ice)"/>
-
-    <g transform="translate(37 57)" stroke="url(#ice)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" fill="none">
-      <path d="M93 17v154M27 55l132 78M27 133l132-78"/>
-      <path d="M93 17l-20 24M93 17l20 24M93 171l-20-24M93 171l20-24"/>
-      <path d="M27 55l30 4M27 55l13 28M159 133l-30-4M159 133l-13-28"/>
-      <path d="M27 133l30-4M27 133l13-28M159 55l-30 4M159 55l-13 28"/>
-    </g>
-  </g>
-
-  <g transform="translate(365 55)" filter="url(#soft)">
-    <text x="0" y="145" font-family="Arial Black, Arial, sans-serif" font-size="154" font-weight="900" letter-spacing="7" fill="url(#deep)" stroke="#eaf8ff" stroke-width="2.5" paint-order="stroke fill">YUKO</text>
-    <path d="M92 7h70l-45 51H72Z" fill="url(#ice)"/>
-    <path d="M7 215h118" stroke="url(#ice)" stroke-width="6" stroke-linecap="round"/>
-    <path d="M668 215h118" stroke="url(#ice)" stroke-width="6" stroke-linecap="round"/>
-    <text x="150" y="237" font-family="Arial, sans-serif" font-size="69" font-weight="800" letter-spacing="24" fill="url(#ice)" stroke="#eefbff" stroke-width="1.4" paint-order="stroke fill">GLOBAL</text>
-    <path d="M175 292l8-12 8 12-8 12Z" fill="url(#ice)"/>
-    <path d="M714 292l8-12 8 12-8 12Z" fill="url(#ice)"/>
-    <text x="215" y="316" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="600" letter-spacing="16" fill="url(#deep)" stroke="#eefbff" stroke-width="1.1" paint-order="stroke fill">SAMARKAND</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" role="img" aria-labelledby="title desc">
+  <title id="title">Yuko Global</title>
+  <desc id="desc">Белая минималистичная монограмма YG с линией воздушного потока на прозрачном фоне.</desc>
+  <g fill="#fff">
+    <path d="M36 24h82l100 105L318 24h82L255 178v57h-74v-57L36 24Z"/>
+    <path d="M590 49c-69 0-118 39-118 83s49 83 118 83c31 0 57-7 78-19v-34h-91v-47h158v95c-38 27-86 41-145 41-111 0-191-50-191-119S479 13 590 13c58 0 106 14 143 42l-46 39c-25-20-57-31-97-31Z"/>
+    <path d="M176 219c69-35 130-49 185-43 44 5 78 24 120 29 49 6 99-2 159-28-35 43-94 67-160 66-53-1-90-20-134-25-44-5-96 5-170 30v-29Z"/>
   </g>
 </svg>
