@@ -20,6 +20,64 @@
     });
   }
 
+  function injectBranding() {
+    const logoUrl = `${rootPrefix}assets/images/brand/yuko-global-samarkand-logo.svg`;
+    const faviconUrl = `${rootPrefix}assets/images/brand/yuko-global-favicon.svg`;
+
+    document.querySelectorAll('.logo').forEach((link) => {
+      link.innerHTML = `<img class="brand-logo-image" src="${logoUrl}" alt="Yuko Global Samarkand">`;
+      link.setAttribute('aria-label', 'Yuko Global Samarkand — главная');
+      link.classList.add('logo--official');
+    });
+
+    const faviconRelations = [
+      { rel: 'icon', type: 'image/svg+xml' },
+      { rel: 'shortcut icon', type: 'image/svg+xml' },
+      { rel: 'apple-touch-icon', type: 'image/svg+xml' }
+    ];
+    faviconRelations.forEach(({ rel, type }) => {
+      let link = document.head.querySelector(`link[rel="${rel}"]`);
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = rel;
+        document.head.appendChild(link);
+      }
+      link.type = type;
+      link.href = faviconUrl;
+    });
+
+    let ogImage = document.head.querySelector('meta[property="og:image"]');
+    if (!ogImage) {
+      ogImage = document.createElement('meta');
+      ogImage.setAttribute('property', 'og:image');
+      document.head.appendChild(ogImage);
+    }
+    ogImage.setAttribute('content', new URL(logoUrl, window.location.href).href);
+
+    let applicationName = document.head.querySelector('meta[name="application-name"]');
+    if (!applicationName) {
+      applicationName = document.createElement('meta');
+      applicationName.name = 'application-name';
+      document.head.appendChild(applicationName);
+    }
+    applicationName.content = 'Yuko Global Samarkand';
+
+    if (!document.querySelector('[data-branding-style]')) {
+      const style = document.createElement('style');
+      style.dataset.brandingStyle = '';
+      style.textContent = `
+        .logo.logo--official{min-width:190px;height:62px;display:inline-flex;align-items:center;justify-content:flex-start;overflow:visible;flex:0 0 auto}
+        .brand-logo-image{display:block;width:190px;height:60px;max-width:none;object-fit:contain;object-position:left center;filter:drop-shadow(0 5px 12px rgba(0,103,207,.16))}
+        .site-footer .logo.logo--official{width:max-content;min-width:0;height:auto;margin-bottom:18px}
+        .site-footer .brand-logo-image{width:250px;height:82px}
+        @media(max-width:1120px){.logo.logo--official{min-width:168px}.brand-logo-image{width:168px;height:54px}}
+        @media(max-width:860px){.logo.logo--official{min-width:148px;height:56px}.brand-logo-image{width:148px;height:50px}.site-footer .brand-logo-image{width:220px;height:74px}}
+        @media(max-width:430px){.logo.logo--official{min-width:124px;height:52px}.brand-logo-image{width:124px;height:44px}.header-inner{gap:8px}.site-footer .brand-logo-image{width:205px;height:70px}}
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
   function injectLanguageSwitcher() {
     if (document.querySelector('[data-language-switcher]')) return;
     const actions = document.querySelector('.header-actions');
@@ -43,10 +101,11 @@
       window.location.href = url.toString();
     });
     const style = document.createElement('style');
-    style.textContent = `.language-switcher{display:inline-flex;align-items:center;padding:3px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.025);gap:2px;flex:0 0 auto}.language-switcher button{width:34px;height:32px;padding:0;border:0;border-radius:999px;background:transparent;color:#8f8f94;font-size:10px;font-weight:800;letter-spacing:.08em;cursor:pointer;transition:.2s ease}.language-switcher button:hover{color:#fff;background:rgba(255,255,255,.07)}.language-switcher button.is-active{color:#080808;background:#f1f1ed}@media(max-width:1120px){.header-phone{display:none}.nav{gap:18px}}@media(max-width:860px){.language-switcher{margin-left:auto}.header-actions{gap:7px}}@media(max-width:430px){.logo-copy strong{font-size:13px}.logo-mark{width:34px;height:34px}.language-switcher button{width:30px;height:29px;font-size:9px}}`;
+    style.textContent = `.language-switcher{display:inline-flex;align-items:center;padding:3px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.025);gap:2px;flex:0 0 auto}.language-switcher button{width:34px;height:32px;padding:0;border:0;border-radius:999px;background:transparent;color:#8f8f94;font-size:10px;font-weight:800;letter-spacing:.08em;cursor:pointer;transition:.2s ease}.language-switcher button:hover{color:#fff;background:rgba(255,255,255,.07)}.language-switcher button.is-active{color:#080808;background:#f1f1ed}@media(max-width:1120px){.header-phone{display:none}.nav{gap:18px}}@media(max-width:860px){.language-switcher{margin-left:auto}.header-actions{gap:7px}}@media(max-width:430px){.language-switcher button{width:30px;height:29px;font-size:9px}}`;
     document.head.appendChild(style);
   }
 
+  injectBranding();
   injectLanguageSwitcher();
 
   function initialize() {
